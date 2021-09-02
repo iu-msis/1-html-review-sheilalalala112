@@ -1,9 +1,35 @@
-header {
+nav {
     background-color: #f5e050;
-    color: #0a75bc;
+    padding: 0%;
+    margin: 0%;
 }
 
+a {
+    font-size: 50px;
+    color: #0a75bc;
+    font-weight: bold;
+    margin-right: 30px;
+}
 
+input {
+    margin: 5px;
+}
 
+h5 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
 
+.font {
+    font-size: 10px;
+}
 
+.morespace {
+    margin-top: 270px;
+}
+
+#fontstyle {
+    font-weight: bold;
+    color: #0a75bc;
+    font-size: 15px;
+}
