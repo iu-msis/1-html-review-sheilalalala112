@@ -11,7 +11,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="container">
         <nav class="row">
@@ -20,7 +20,67 @@
         <div><a class="navbar-link" href="gallery.html">GALLERY</a></div>
         </nav>
 
-        
+        <table class="row table table-striped table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>TITLE</th>	
+                <th>AUTHOR(S)</th>	
+                <th>YEAR PUBLISHED</th>
+                <th>PUBLISHER</th>
+                <th>PAGE COUNT</th>
+                <th>MSRP</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>Rich Dad Poor Dad</td>
+                  <td>Robert T. Kiyosaki</td>	
+                  <td>2017</td>
+                  <td>Plata Publishing</td>
+                  <td>336</td>
+                  <td>$10.00</td>
+                </tr>
+                <tr>
+                  <td>The Weekday Vegetarians</td>	
+                  <td>Jenny Rosenstrach</td>	
+                  <td>2021</td>
+                  <td>Clarkson Potter PUblishers</td>
+                  <td>256</td>
+                  <td>$29.90</td>
+                </tr>
+                <tr>
+                  <td>Braiding Sweetgrass</td>	
+                  <td>Robin Wall Kimmerer</td>	
+                  <td>2014</td>
+                  <td>Milkweed Editions</td>
+                  <td>390</td>
+                  <td>$16.56</td>
+                </tr>
+                <tr>
+                  <td>Little Women</td>	
+                  <td>Louisa May Alcott</td>	
+                  <td>2004</td>
+                  <td>Barnes&Noble</td>
+                  <td>528</td>
+                  <td>$8.95</td>
+                </tr>
+            </tbody>  
+        </table><br><br>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <form action="confirmation.html" method="post">
+                    Book Title <input type="text"><br>
+                    Author <input type="text"><br>
+                    Year Published <input type="text"><br>
+                    Publisher <input type="text"><br>
+                    Page Count <input type="text"><br>
+                    MSRP <input type="text"><br>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+
+        </div>
     </body>
 
 
