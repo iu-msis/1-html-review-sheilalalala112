@@ -4,7 +4,7 @@ nav {
     margin: 0%;
 }
 
-a {
+.a {
     font-size: 50px;
     color: #0a75bc;
     font-weight: bold;
@@ -25,7 +25,7 @@ h5 {
 }
 
 .morespace {
-    margin-top: 270px;
+    margin-bottom: 270px;
 }
 
 #fontstyle {
@@ -33,3 +33,4 @@ h5 {
     color: #0a75bc;
     font-size: 15px;
 }
+
