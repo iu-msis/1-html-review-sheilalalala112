@@ -12,17 +12,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body class="container">
         <nav class="row">
-        <center><a class="a" href="index.html">HOME</a>
-        <a class="a" href="books.html">BOOKS</a>
-        <a class="a" href="gallery.html">GALLERY</a></center>
-        </nav><br><br><br>
-    <main class="row">
-        <center><img src="img/profile.jpg" alt="profilepic" height="360px"></center><br><br><br>
-        <center><cite><a class="font" href="https://m.media-amazon.com/images/I/61bRfnGfJTL._AC_SX466_.jpg">https://m.media-amazon.com/images/I/61bRfnGfJTL._AC_SX466_.jpg</a></cite></center><br><br>
-        <center><p id="fontstyle">Hi! Mhsfgaihd KEVIN, akdghjfdklnds United States, jsdaglauigh April 4th, dgjdkghoerhuih 11 yeeehrs old, sdjgsibv <a href="mailto:kekevin@banana.com"><u>kekevin@banana.com</u></a></p></center>
+        <div class='col-lg-4'><a class="a" href="index.html">HOME</a></div>
+        <div class='col-lg-4'><a class="a" href="books.html">BOOKS</a></div>
+        <div class='col-lg-4'><a class="a" href="gallery.html">GALLERY</a></div>
+        </nav>
+    <main id="personalinfo" class="row">
+       <img v-bind:src="person.picture.large" alt="profilepic" height="360px">
+
+        <p id="fontstyle" class="position-absolute top-50 start-100 translate-middle">Hi! Mhsfgaihd {{ person.name.first }}, akdghjfdklnds {{ person.location.country}}, jsdaglauigh {{ person.dob.date }}, dgjdkghoerhuih {{ person.dob.age }} yeeehrs old, sdjgsibv <a v-bind:href="'mailto:'+person.email"><u>{{ person.email }}</u></a></p>
     
     </main>
+    
+    <script src="js/randomPerson.js"></script>
   </body>

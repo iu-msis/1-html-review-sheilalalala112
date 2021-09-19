@@ -11,6 +11,13 @@ nav {
     margin-right: 30px;
 }
 
+.center {
+	margin:auto;
+	width: 50%;
+}
+
+
+
 input {
     margin: 5px;
 }
