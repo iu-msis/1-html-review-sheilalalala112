@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width">
     <title>Bootstrap</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Bootstrap code -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     
@@ -20,12 +21,21 @@
         <div class='col-lg-4'><a class="a" href="books.html">BOOKS</a></div>
         <div class='col-lg-4'><a class="a" href="gallery.html">GALLERY</a></div>
         </nav>
-    <main id="personalinfo" class="row">
+    <main id="personalinfo" class="row d-flex justify-content-center">
+       
+      <div class="person_image">
         <img v-bind:src="person.picture.large" alt="profilepic">
+      </div>
 
-        <p id="fontstyle" class="position-absolute top-50 start-100 translate-middle">Hi! Mhsfgaihd {{ person.name.first }}, akdghjfdklnds {{ person.location.country}}, jsdaglauigh {{ person.dob.date }}, dgjdkghoerhuih {{ person.dob.age }} yeeehrs old, sdjgsibv <a v-bind:href="'mailto:'+person.email"><u>{{ person.email }}</u></a></p>
-    
+      <div id="fontstyle" class="row ">
+        <div>Hi! Mhsfgaihd {{ person.name.first }}</div>
+        <div>akdghjfdklnds {{ person.location.country}}</div>
+        <div>jsdaglauigh {{ person.dob.date }}</div> dgjdkghoerhuih {{ person.dob.age }} yeeehrs old, sdjgsibv <a v-bind:href="'mailto:'+person.email"><u>{{ person.email }}</u></a></p>
+      </div>
     </main>
     
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     <script src="js/randomPerson.js"></script>
   </body>

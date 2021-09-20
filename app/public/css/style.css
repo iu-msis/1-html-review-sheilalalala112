@@ -17,6 +17,16 @@ nav {
 }
 
 
+.person_image {
+	text-align: center;
+	margin: 80px 0px 80px 0px;
+}
+
+.person_image img {
+	max-width: 500px;
+}
+
+
 
 input {
     margin: 5px;
