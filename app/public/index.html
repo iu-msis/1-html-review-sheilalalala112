@@ -21,7 +21,7 @@
         <div class='col-lg-4'><a class="a" href="gallery.html">GALLERY</a></div>
         </nav>
     <main id="personalinfo" class="row">
-       <img v-bind:src="person.picture.large" alt="profilepic" height="360px">
+        <img v-bind:src="person.picture.large" alt="profilepic">
 
         <p id="fontstyle" class="position-absolute top-50 start-100 translate-middle">Hi! Mhsfgaihd {{ person.name.first }}, akdghjfdklnds {{ person.location.country}}, jsdaglauigh {{ person.dob.date }}, dgjdkghoerhuih {{ person.dob.age }} yeeehrs old, sdjgsibv <a v-bind:href="'mailto:'+person.email"><u>{{ person.email }}</u></a></p>
     
