@@ -1,22 +1,10 @@
+/* Navigation bar CSS */
 nav {
     background-color: #f5e050;
-    padding: 0%;
-    margin: 0%;
+	color: #0a75bc;
 }
 
-.a {
-    font-size: 50px;
-    color: #0a75bc;
-    font-weight: bold;
-    margin-right: 30px;
-}
-
-.center {
-	margin:auto;
-	width: 50%;
-}
-
-
+/* Definining image CSS */
 .person_image {
 	text-align: center;
 	margin: 80px 0px 80px 0px;
@@ -26,12 +14,24 @@ nav {
 	max-width: 500px;
 }
 
+.personal_info {
+	text-align: left; 
+	margin: auto; 
+	width: 600px;  
+	border: lightgray;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	padding: 20px 10px 20px 10px;
+	box-shadow: 12px 12px 2px 1px #0a75bc; /* Code taken from: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+}
 
-
+/*styling for book info user input*/
 input {
     margin: 5px;
 }
 
+/*gallery notation*/
 h5 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
@@ -48,8 +48,11 @@ h5 {
 #fontstyle {
     font-weight: bold;
     color: #0a75bc;
-    font-size: 15px;
+    font-size: 16px;
 }
+
+
+/* Table.html */
 
 /** tablesort from https://github.com/tristen/tablesort/blob/gh-pages/tablesort.css **/
 th[role=columnheader]:not(.no-sort) {
