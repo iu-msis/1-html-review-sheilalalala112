@@ -12,7 +12,7 @@ const RandomPerson = {
     computed: {
         prettyBirthday() {
             return dayjs(this.person.dob.date)
-            .format('DD/MM/YYYY');
+            .format('DD MMM YYYY');
         }
     },
 
