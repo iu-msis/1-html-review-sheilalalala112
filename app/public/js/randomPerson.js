@@ -3,7 +3,9 @@ const RandomPerson = {
     data() {
       return {
           // objects
-        "person": {},
+        "person": undefined
+            // name: {},
+            // picture: {}
         }
     },
 

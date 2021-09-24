@@ -45,24 +45,25 @@
   <!-- Main code -->
   <div class="container">
     <main id="personalinfo" class="row d-flex justify-content-center">
-        
-      <!-- Image code-->
-      <div class="person_image">
-        <img v-bind:src="person.picture.large" class="img-fluid" alt="profilepic">
-      </div>
+      <div v-if="person">  
+        <!-- Image code-->
+        <div class="person_image">
+          <img v-bind:src="person.picture.large" class="img-fluid" alt="profilepic">
+        </div>
 
-      <!-- Person informaiton -->
-      <div id="fontstyle" class="row d-flex personal_info">
-        <div>Hi! My name is {{ person.name.first }} {{ person.name.last }}</div>
-        <div>I am from {{ person.location.country}}</div>
-        <div>I was born on {{ person.dob.date }} {{ prettyBirthday }} and I am {{ person.dob.age }} years old.</div>
-        <div>Contact me at: <a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></div>
-        <div> 
-          <form v-on:submit.prevent="fetchUserData">
-          <button type="submit">Reload</button></form>
+        <!-- Person informaiton -->
+        <div id="fontstyle" class="row d-flex personal_info">
+          <div>Hi! My name is {{ person.name.first }} {{ person.name.last }}</div>
+          <div>I am from {{ person.location.country}}</div>
+          <div>I was born on {{ prettyBirthday }} and I am {{ person.dob.age }} years old.</div>
+          <div>Contact me at: <a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></div>
+          <div> 
+            <form v-on:submit.prevent="fetchUserData">
+              <button type="submit">Reload</button>
+            </form>
+          </div>
         </div>
       </div>
-
     </main>
     
     <!-- Bootstrap JS -->
