@@ -1,73 +1,89 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     
-    <!-- Connecting to website CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-
-    <!-- Loads Vue.js -->
     <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <title>Hello, world!</title>
   </head>
   <body>
-
-    <!-- Navigation menu -->
-    <nav class="navbar navbar-expand-lg"> <!-- Defines navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-          
-        <a class="navbar-brand" href="index.html">User Page</a>
+        <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <!-- Navigation menu for nav bar-->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="books.html">Books</a>
+              <a class="nav-link" href="#">Features</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="gallery.html">Gallery</a>
+              <a class="nav-link" href="#">Pricing</a>
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-  <!-- Main code -->
-  <div class="container">
-    <main id="personalinfo" class="row d-flex justify-content-center">
-      <div v-if="person">  
-        <!-- Image code-->
-        <div class="person_image">
-          <img v-bind:src="person.picture.large" class="img-fluid" alt="profilepic">
-        </div>
-
-        <!-- Person informaiton -->
-        <div id="fontstyle" class="row d-flex personal_info">
-          <div>Hi! My name is {{ person.name.first }} {{ person.name.last }}</div>
-          <div>I am from {{ person.location.country}}</div>
-          <div>I was born on {{ prettyBirthday }} and I am {{ person.dob.age }} years old.</div>
-          <div>Contact me at: <a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></div>
-          <div> 
-            <form v-on:submit.prevent="fetchUserData">
-              <button type="submit">Reload</button>
-            </form>
+    <div id="offerApp" class="container">
+        <div class="row align-items-start">
+          <div class="col col-4">
+            <!-- <p>Profile information for {{ person.name.first }}</p> -->
+            <div v-for="s in students" v-on:click="selectStudent(s)"
+             :class="['student', {selected: selectedStudent && s.id == selectedStudent.id}]">
+              <span class="userName">{{ s.username }}</span><br>
+              <span class="studentName">{{ s.name }}</span>
+            </div>
           </div>
+
+          <div  class="col col-8" v-if="selectedStudent">
+            <h1>Offers for {{ selectedStudent.name }}</h1>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Salary</th>
+                  <th>Bonus</th>
+                  <th>Offer Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+                <tbody>
+                    <tr v-for="offer in offers">
+                        <td>{{ offer.companyName }}</td>
+                        <td>{{ prettyDollar(offer.salary) }}</td>
+                        <td>{{ prettyDollar(offer.bonus) }}</td>
+                        <td>{{ offer.offerDate }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="noOffers" v-if="! offers.length">
+              <h3>No offers. 😥</h3>
+            </div>
+
+          </div>
+
         </div>
+
       </div>
-    </main>
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-    <script src="js/randomPerson.js"></script>
+
+    <script src="js/index.js"></script>
   </body>
+
+</html>
