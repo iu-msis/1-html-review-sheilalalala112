@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -14,34 +14,36 @@
     <!-- Loads Vue.js -->
     <script src="https://unpkg.com/vue@next"></script>
   </head>
+  <body>
 
-    <body>
-       <!-- Navigation menu -->
-      <nav class="navbar navbar-expand-lg"> <!-- Defines navbar -->
-        <div class="container-fluid">
-            
-          <a class="navbar-brand" href="index.html">User Page</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+    <!-- Navigation menu -->
+    <nav class="navbar navbar-expand-lg"> <!-- Defines navbar -->
+      <div class="container-fluid">
+          
+        <a class="navbar-brand" href="index.html">User Page</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-          <!-- Navigation menu for nav bar-->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="books.html">Books</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="gallery.html">Gallery</a>
-              </li>
-            </ul>
-          </div>
+        <!-- Navigation menu for nav bar-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="books.html">Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-      <div class="container">
+      </div>
+    </nav>
+
+    <div id="booklist" class="container">
+      <div>
         <table id="booktable" class="row table table-striped table-hover table-condensed">
             <thead>
               <tr>
@@ -54,62 +56,43 @@
               </tr>
             </thead>
             <tbody>
-                <tr>
-                  <td>Rich Dad Poor Dad</td>
-                  <td>Robert T. Kiyosaki</td>	
-                  <td>2017</td>
-                  <td>Plata Publishing</td>
-                  <td>336</td>
-                  <td>$10.00</td>
-                </tr>
-                <tr>
-                  <td>The Weekday Vegetarians</td>	
-                  <td>Jenny Rosenstrach</td>	
-                  <td>2021</td>
-                  <td>Clarkson Potter PUblishers</td>
-                  <td>256</td>
-                  <td>$29.90</td>
-                </tr>
-                <tr>
-                  <td>Braiding Sweetgrass</td>	
-                  <td>Robin Wall Kimmerer</td>	
-                  <td>2014</td>
-                  <td>Milkweed Editions</td>
-                  <td>390</td>
-                  <td>$16.56</td>
-                </tr>
-                <tr>
-                  <td>Little Women</td>	
-                  <td>Louisa May Alcott</td>	
-                  <td>2004</td>
-                  <td>Barnes&Noble</td>
-                  <td>528</td>
-                  <td>$8.95</td>
+                <tr v-for="book in books">
+                  <td>{{ book.title }}</td>
+                  <td>{{ book.author }}</td>	
+                  <td>{{ book.yearPublished }}</td>
+                  <td>{{ book.publisher }}</td>
+                  <td>{{ book.pageCount }}</td>
+                  <td>{{ book.mspr }}</td>
                 </tr>
             </tbody>  
-        </table><br><br>
+        </table><br>
+      </div>
 
-        <div class="row">
-            <div>
-                <form action="confirmation.html" method="post">
-                    Book Title <input type="text"><br>
-                    Author <input type="text"><br>
-                    Year Published <input type="text"><br>
-                    Publisher <input type="text"><br>
-                    Page Count <input type="text"><br>
-                    MSRP <input type="text"><br>
-                    <input type="submit" value="submit">
-                </form>
-            </div>
-
-        </div>
-        <script src="js/tablesort.min.js"></script>
-        <!--bootstrap js-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <div class="row">
+          <div>
+              <form action="confirmation.html" method="post">
+                  Book Title <input type="text"><br>
+                  Author <input type="text"><br>
+                  Year Published <input type="text"><br>
+                  Publisher <input type="text"><br>
+                  Page Count <input type="text"><br>
+                  MSRP <input type="text"><br>
+                  <input type="submit" value="submit">
+              </form>
+          </div>
+      </div>
+      
         <script>
           new Tablesort(document.getElementById('booktable'));
         </script>
-      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
+    <script src="js/booklist.js"></script>  
+
     </body>
 
-
+</html>
