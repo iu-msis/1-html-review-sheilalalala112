@@ -14,6 +14,7 @@ class DbConnection
       }
 
       try {
+        // connect to the mysql and database
           $dsn = 'mysql:host='.getenv('MYSQL_HOST').';dbname='.getenv('MYSQL_DATABASE').';charset=utf8';
           error_log($dsn);
           self::$connection = new PDO(
@@ -26,7 +27,7 @@ class DbConnection
                  PDO::ATTR_EMULATE_PREPARES   => false
              ]
            );
-      } catch (\PDOException $e) {
+      } catch (\PDOException $e) { //if something goes wrong, shows a PDO Exception msg
           throw new \PDOException($e->getMessage(), (int)$e->getCode());
       }
       return self::$connection;

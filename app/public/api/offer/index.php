@@ -8,6 +8,7 @@ $db = DbConnection::getConnection();
 $sql = 'SELECT * FROM offer';
 $vars = [];
 
+// display things from two different tables  - isset : look at student table
 if (isset($_GET['student'])) {
   // This is an example of a parameterized query
   $sql = 'SELECT * FROM offer WHERE studentId = ?';
