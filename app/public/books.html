@@ -43,7 +43,7 @@
     </nav>
 
     <div id="booklist" class="container">
-      <div>
+      <div class="col col-8">
         <table id="booktable" class="row table table-striped table-hover table-condensed">
             <thead>
               <tr>
@@ -66,22 +66,36 @@
                 </tr>
             </tbody>  
         </table><br>
-      </div>
-
-      <div class="row">
-          <div>
-              <form action="confirmation.html" method="post">
-                  Book Title <input type="text"><br>
-                  Author <input type="text"><br>
-                  Year Published <input type="text"><br>
-                  Publisher <input type="text"><br>
-                  Page Count <input type="text"><br>
-                  MSRP <input type="text"><br>
-                  <input type="submit" value="submit">
-              </form>
-          </div>
-      </div>
       
+
+        <form v-on:submit.prevent="postNewBook"><!--index.js-->
+          <div class="mb-3">
+            <!--every input needs to have a label, label tag makes it clickable-->
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" v-model="bookForm.title"> <!--vmodel enable the two way bind-->
+          </div>
+          <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <!--type adds constrains for the input-->
+            <input type="text" class="form-control" v-model="bookForm.author" id="author">
+          </div>
+          <div class="mb-3">
+            <label for="yearpublished" class="form-label">Year Published</label>
+            <input type="number" v-model="bookForm.yearPublished" class="form-control" id="yearpublished">
+          </div>
+          <div class="mb-3">
+            <label for="pagecount" class="form-label">Page Count</label>
+            <!--type 'date' automarically gives you a calender-->
+            <input type="number" v-model="bookForm.pageCount" class="form-control" id="pagecount">
+          </div>
+          <div class="mb-3">
+            <label for="mspr" class="form-label">MSPR</label>
+            <!--type 'date' automarically gives you a calender-->
+            <input type="number" v-model="bookForm.mspr" class="form-control" id="mspr">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
         <script>
           new Tablesort(document.getElementById('booktable'));
         </script>
