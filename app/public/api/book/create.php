@@ -32,7 +32,7 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare( 
-  'INSERT INTO offer (title, author, yearPublished, publisher, pageCount, mspr)
+  'INSERT INTO book (title, author, yearPublished, publisher, pageCount, mspr)
   VALUES (?, ?, ?, ?, ?, ?)'
 );
 // pass all these values to the query
@@ -53,5 +53,5 @@ $stmt->execute([
 // Step 4: Output
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
-header('HTTP/1.1 303 See Other'); //303 means so far it's succeed, for the rest of the info go to offer/?student='
-header('Location: ../book');//what is this? maybe this is what causing the problem
+// header('HTTP/1.1 303 See Other'); //303 means so far it's succeed, for the rest of the info go to offer/?student='
+// header('Location: ../book');//what is this? maybe this is what causing the problem

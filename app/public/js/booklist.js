@@ -44,7 +44,7 @@ const BookList = {
             });
         }
 
-    }
+    },
 
     created() {
         this.fetchBookData();
