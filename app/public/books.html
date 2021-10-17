@@ -84,14 +84,23 @@
             <input type="number" v-model="bookForm.yearPublished" class="form-control" id="yearpublished">
           </div>
           <div class="mb-3">
+            <label for="publisher" class="form-label">Publisher</label>
+            <!--type adds constrains for the input-->
+            <input type="text" class="form-control" v-model="bookForm.publisher" id="publisher">
+          </div>
+          <div class="mb-3">
             <label for="pagecount" class="form-label">Page Count</label>
             <!--type 'date' automarically gives you a calender-->
             <input type="number" v-model="bookForm.pageCount" class="form-control" id="pagecount">
           </div>
-          <div class="mb-3">
-            <label for="mspr" class="form-label">MSPR</label>
-            <!--type 'date' automarically gives you a calender-->
-            <input type="number" v-model="bookForm.mspr" class="form-control" id="mspr">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <lable for="mspr"><span class="input-group-text">$</span></lable>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="bookForm.mspr" id="mspr">
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

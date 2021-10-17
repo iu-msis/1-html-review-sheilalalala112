@@ -10,7 +10,7 @@ const BookList = {
     methods: {
         
         fetchBookData() {
-            fetch('/api/book/')
+            fetch('/api/book/index.php')
             .then( response => response.json() )
             .then( (responseJson) => {
                 console.log(responseJson);
