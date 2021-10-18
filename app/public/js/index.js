@@ -6,7 +6,8 @@ const SomeApp = {
         students: [],
         selectedStudent: null, // for selecting a particular student
         offers: [],
-        offerForm:{} //two way bind, adds and if someone changes the data -- vmodel in html
+        offerForm:{} //two way bind, adds and if someone changes the data -- vmodel
+        selectedOffer = ??? // check with his code
       }
     },
     computed: {}, //for calculation 
@@ -59,6 +60,23 @@ const SomeApp = {
             });
         },
         
+        postOffer(evt){
+            if (this.selectedOffer) {
+                this.postEditOffer(evt); //if it's in edit mode
+            } else {
+                this.postNewOffer(evt); // if it's in create mode 
+            }
+        },
+
+        postEditOffer(evt) {
+            this.offerForm.id = this.selectedOffer.id; //update need offer id
+            this.offerForm.studentId = this.selectedStudent.id;
+            console.log("Editing:", this.offerForm);
+
+            fetch('api/offer/index.php')
+
+        },
+
         postNewOffer(evt) { //event handler for form submission, event object is the default 
             //select the student id and add another offer into this student
             this.offerForm.studentId = this.selectedStudent.id; //now we can insert a new row in the table       
@@ -81,7 +99,18 @@ const SomeApp = {
                 // reset the form
                 this.offerForm = {};
             });
+        },
+
+        handleEditOffer(offer) {
+            this.selectedOffer = offer; //mark it as selected, it's not making a new copy of the offer
+            this.offerForm = this.selectedOffer; 
+        },
+
+        handleResetEdit () {
+            this.selectedOffer = null; //should go into edit mode and let it edit
+            this.offerForm = {}; 
         }
+
     },
 
     created() {
