@@ -31,8 +31,8 @@ $db = DbConnection::getConnection();
 
 // Step 2: change the query to delete the whole row in the offer table 
 // Note the use of parameterized statements to avoid injection
-$stmt = $db->prepare( 
-  'DELETE FROM offer WHERE id = ?' //make sure you have where in 
+$stmt = $db->prepare(
+  'DELETE FROM offer WHERE id = ?'
 );
 // pass all these values to the query
 // info be passed later

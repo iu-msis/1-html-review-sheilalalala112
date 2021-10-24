@@ -6,8 +6,8 @@ const SomeApp = {
         students: [],
         selectedStudent: null, // for selecting a particular student
         offers: [],
-        offerForm:{} //two way bind, adds and if someone changes the data -- vmodel
-        selectedOffer = ??? // check with his code
+        offerForm:{}, //two way bind, adds and if someone changes the data -- vmodel
+        selectedOffer: null
       }
     },
     computed: {}, //for calculation 
@@ -60,22 +60,38 @@ const SomeApp = {
             });
         },
         
-        postOffer(evt){
-            if (this.selectedOffer) {
-                this.postEditOffer(evt); //if it's in edit mode
-            } else {
-                this.postNewOffer(evt); // if it's in create mode 
-            }
+        postOffer(evt) {
+            console.log ("Test:", this.selectedOffer);
+          if (this.selectedOffer) {
+              this.postEditOffer(evt);
+          } else {
+              this.postNewOffer(evt);
+          }
         },
 
         postEditOffer(evt) {
-            this.offerForm.id = this.selectedOffer.id; //update need offer id
-            this.offerForm.studentId = this.selectedStudent.id;
-            console.log("Editing:", this.offerForm);
-
-            fetch('api/offer/index.php')
-
-        },
+            this.offerForm.id = this.selectedOffer.id;
+            this.offerForm.studentId = this.selectedStudent.id;        
+            
+            console.log("Editing!", this.offerForm);
+    
+            fetch('api/offer/update.php', {
+                method:'POST',
+                body: JSON.stringify(this.offerForm),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.offers = json;
+                
+                // reset the form
+                this.handleResetEdit();
+              });
+          },
 
         postNewOffer(evt) { //event handler for form submission, event object is the default 
             //select the student id and add another offer into this student
@@ -101,41 +117,37 @@ const SomeApp = {
             });
         },
 
-        postDeleteOffer(evt) { //event handler for form submission, event object is the default 
-            //select the student id and add another offer into this student
-            if (!confirm("Are you sure you want to delete the offer from" + o.companyName + "?")) {
+        postDeleteOffer(o) {  //what is o?
+            if ( !confirm("Are you sure you want to delete the offer from " + o.companyName + "?") ) {
                 return;
-            }
-
-            console.log("Delete:", o);
+            }  
             
-
-            fetch('api/offer/delete.php', { //need to create delete.php
+            console.log("Delete!", o);
+    
+            fetch('api/offer/delete.php', {
                 method:'POST',
                 body: JSON.stringify(o),
                 headers: {
-                    "Content-Type": "application/json; charset=utf-8"
+                  "Content-Type": "application/json; charset=utf-8"
                 }
-            })
-            .then( response => response.json() )
-            .then( json => {
+              })
+              .then( response => response.json() )
+              .then( json => {
                 console.log("Returned from post:", json);
                 // TODO: test a result was returned!
                 this.offers = json;
                 
                 // reset the form
-                this.offerForm = {};
-            });
-        },
-
+                this.handleResetEdit();
+              });
+          },
         handleEditOffer(offer) {
-            this.selectedOffer = offer; //mark it as selected, it's not making a new copy of the offer
-            this.offerForm = this.selectedOffer; 
+            this.selectedOffer = offer;
+            this.offerForm = Object.assign({}, this.selectedOffer);
         },
-
-        handleResetEdit () {
-            this.selectedOffer = null; //should go into edit mode and let it edit
-            this.offerForm = {}; 
+        handleResetEdit() { 
+            this.selectedOffer = null;
+            this.offerForm = {};
         }
 
     },
