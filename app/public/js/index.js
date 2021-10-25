@@ -149,6 +149,7 @@ const SomeApp = {
             this.selectedOffer = null;
             this.offerForm = {};
         }
+        // .catch // to enforce form validation 
 
     },
 

@@ -24,7 +24,7 @@ const BookList = {
 
         postBook(evt) { // evt - object 
             console.log ("Test:", this.selectedBook);
-          if (this.selectedBook) { // if it's not null, call posteditbook, if the info doesn't exist, then its a new entry
+          if (this.selectedBook) { // if it's not null/info exists, call posteditbook, if the info doesn't exist, then its a new entry
               this.postEditBook(evt);
           } else {
               this.postNewBook(evt);
