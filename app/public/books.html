@@ -73,7 +73,7 @@
         </table><br>
       
         <h3>{{ selectedBook === null ? "Add " : "Edit " }} Book</h3>
-        <form v-on:submit.prevent="postNewBook"><!--index.js-->
+        <form v-on:submit.prevent="postBook"><!--index.js-->
           <div class="mb-3">
             <!--every input needs to have a label, label tag makes it clickable-->
             <label for="title" class="form-label">Title</label>

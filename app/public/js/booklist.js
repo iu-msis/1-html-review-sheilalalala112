@@ -3,7 +3,7 @@ const BookList = {
       return {
         books: [],
         bookForm: {},
-        selectedBook: null
+        selectedBook: null //initially null
       }
     },
 
@@ -22,9 +22,9 @@ const BookList = {
             })
         },
 
-        postBook(evt) { // what does this do?? 
+        postBook(evt) { // evt - object 
             console.log ("Test:", this.selectedBook);
-          if (this.selectedBook) {
+          if (this.selectedBook) { // if it's not null, call posteditbook, if the info doesn't exist, then its a new entry
               this.postEditBook(evt);
           } else {
               this.postNewBook(evt);
@@ -32,11 +32,11 @@ const BookList = {
         },
 
         postEditBook(evt) {
-            this.offerForm.id = this.selectedBook.id;
+            this.bookForm.id = this.selectedBook.id;
             // this.offerForm.studentId = this.selectedStudent.id;        
             
             console.log("Editing!", this.bookForm);
-    
+            alert("Editing!");
             fetch('api/book/update.php', {
                 method:'POST',
                 body: JSON.stringify(this.bookForm),

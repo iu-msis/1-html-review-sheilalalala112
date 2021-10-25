@@ -37,7 +37,8 @@ $stmt = $db->prepare( // click then info about the book appear from this code???
     yearPublished = ?,
     publisher = ?,
     pageCount = ?,
-    mspr = ?'
+    mspr = ?
+  WHERE id = ?' //auto refer to auto-incremented id, always need id for the specific thing, else all titles will be changed
 );
 
 $stmt->execute([
@@ -46,7 +47,8 @@ $stmt->execute([
   $_POST['yearPublished'],
   $_POST['publisher'],
   $_POST['pageCount'],
-  $_POST['mspr']
+  $_POST['mspr'],
+  $_POST['id'] 
 ]);
 
 // Get auto-generated PK from DB
