@@ -77,7 +77,7 @@ const BookList = {
             });
         },
         
-        postDeleteBook(o) {  //why is it o here but it's book in html? 
+        postDeleteBook(o) {  //???????why is it o here but it's book in html? 
             if ( !confirm("Are you sure you want to delete the book " + o.title + "?") ) {
                 return;
             }  
